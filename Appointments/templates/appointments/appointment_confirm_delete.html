@@ -1,0 +1,20 @@
+{% extends "announcement/base.html"%}
+
+{% block content %}
+<div class="content-section">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Delete Appointment? 
+                <h2> Are you sure you want to delete Appointment on "{{object.date}}"</h2>
+            </legend>
+        </fieldset>
+        <div class="form-group">
+            <button class ="btn btn-outline-danger" type="submit">Confirm </button>
+            <a class ="btn btn-outline-secondary" href="{% url 'appointment-detail' object.id %}">Cancel </a>
+        </div>
+    </form>
+
+
+</div>
+{% endblock content %}

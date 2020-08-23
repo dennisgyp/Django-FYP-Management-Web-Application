@@ -1,0 +1,33 @@
+{% extends "announcement/base.html"%}
+{% block content %} 
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+      <h5>Appointment Info</h5>
+			<hr>
+            <p>Date: {{appointment.date}}</p>
+            <p>Start Time: {{appointment.start_time}}</p>
+            <p>End Time: {{appointment.end_time}}</p>
+            <p>Location: {{appointment.location}}</p>
+            <p>Supervisor: {{appointment.supervisor}}</p>
+            <p>Status: {{appointment.status}}</p>
+            <p>Notes: {{appointment.notes}}</p>
+           {% if object.supervisor == user %}
+            <div>
+              <a class="btn btn-secondary" btn-sm mt-1 mb-1 href="{% url 'appointment-update' object.id %}">Update</a>
+            </div>
+            {% endif %}
+
+            {% if object.user == user %}
+            <div>
+              <a class="btn btn-danger" btn-sm mt-1 mb-1 href="{% url 'appointment-delete' object.id %}">Delete</a>
+          </div>
+            {% endif %}
+              
+    </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}
